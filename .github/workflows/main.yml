@@ -1,0 +1,13 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: numworks/setup-msys2@v1
+      with:
+        msystem: MINGW32
