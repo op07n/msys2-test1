@@ -6,8 +6,17 @@ jobs:
   build:
 
     runs-on: windows-latest
-    
+    env:
+      MSYS2_ARCH: i686
     steps:
+    - uses: actions/checkout@v1
     - uses: numworks/setup-msys2@v1
       with:
+        update: true
         msystem: MINGW32
+        
+    - name: Install MSYS2 Dependencies
+      run: >
+        pacman --noconfirm -S --needed mingw-w64-i686-gcc
+        mingw-w64-i686-zlib mingw-w64-i686-curl
+        mingw-w64-i686-libconfig mingw-w64-i686-fftw
